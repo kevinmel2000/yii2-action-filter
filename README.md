@@ -34,6 +34,17 @@ Add This under set alias
 Yii::$container->set('yii\grid\ActionColumn', [
    'class' => 'common\components\ActionColumn',
    'visibleCallback' => function($name) {
+       return \Yii::$app->user->can($name);
+   },
+]);
+```
+
+or spesifik user by id
+
+```
+Yii::$container->set('yii\grid\ActionColumn', [
+   'class' => 'common\components\ActionColumn',
+   'visibleCallback' => function($name) {
        return \Yii::$app->user->can(\Yii::$app->controller->id . '/' . $name);
    },
 ]);
