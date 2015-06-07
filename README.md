@@ -1,6 +1,6 @@
 ActionColumn Integration Yii2-admin
 ===================================
-Hak Akeses For ActionColumn
+Hak Akeses For ActionColumn by rule from yii2-admin
 
 Installation
 ------------
@@ -10,7 +10,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist ilhammalik/yii2-action-filter "*"
+php composer.phar require ilhammalik/yii2-action-filter "*"
 ```
 
 or add
@@ -27,5 +27,14 @@ Usage
 
 Once the extension is installed, simply use it in your code by  :
 
-```php
-<?= \ilhammalik\grid\AutoloadExample::widget(); ?>```
+create defendensi injection \common\config\bootsrap.php
+
+Add This under set alias
+```
+Yii::$container->set('yii\grid\ActionColumn', [
+   'class' => 'common\components\ActionColumn',
+   'visibleCallback' => function($name) {
+       return \Yii::$app->user->can(\Yii::$app->controller->id . '/' . $name);
+   },
+]);
+```
