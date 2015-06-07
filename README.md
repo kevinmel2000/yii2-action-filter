@@ -39,7 +39,7 @@ Yii::$container->set('yii\grid\ActionColumn', [
 ]);
 ```
 
-or spesifik user by id
+or specific user by id
 
 ```
 Yii::$container->set('yii\grid\ActionColumn', [
